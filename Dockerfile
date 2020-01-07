@@ -41,4 +41,4 @@ COPY ./frr-fuzz/samples /opt/fuzz/samples/
 
 COPY ./entrypoint.sh /opt/entrypoint.sh
 ENTRYPOINT ["/opt/entrypoint.sh"]
-CMD ["zebra", "6"]
+CMD ["$target", "$cores"]
