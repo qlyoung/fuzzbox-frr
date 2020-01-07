@@ -1,4 +1,4 @@
-FROM qlyoung/fuzzbox:master
+FROM qlyoung/fuzzbox:latest
 
 # frr & libyang build deps
 RUN apt-get update && \
