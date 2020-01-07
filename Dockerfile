@@ -36,13 +36,8 @@ RUN cd /opt/build && \
     ./install-frr.sh -boiqaf
 
 RUN mkdir -p /opt/fuzz/samples /opt/fuzz/out
-COPY ./*.conf ./frr-fuzz/monitor.sh /opt/fuzz/
+COPY ./*.conf ./afl2influx.sh /opt/fuzz/
 COPY ./frr-fuzz/samples /opt/fuzz/samples/
-
-# Grafana
-EXPOSE 3000
-# InfluxDB
-EXPOSE 8086
 
 COPY ./entrypoint.sh /opt/entrypoint.sh
 ENTRYPOINT ["/opt/entrypoint.sh"]
