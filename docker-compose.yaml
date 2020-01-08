@@ -34,34 +34,18 @@ services:
     build:
       context: .
     command: ["bgpd", "2"]
-    deploy:
-      resources:
-        reservations:
-          cpus: '2'
   fuzz-zebra:
     image: qlyoung/fuzzbox-frr
     build:
       context: .
     command: ["zebra", "2"]
-    deploy:
-      resources:
-        reservations:
-          cpus: '2'
   fuzz-pimd:
     image: qlyoung/fuzzbox-frr
     build:
       context: .
     command: ["pimd", "2"]
-    deploy:
-      resources:
-        reservations:
-          cpus: '2'
   fuzz-ospfd:
     image: qlyoung/fuzzbox-frr
     build:
       context: .
     command: ["ospfd", "2"]
-    deploy:
-      resources:
-        reservations:
-          cpus: '2'
