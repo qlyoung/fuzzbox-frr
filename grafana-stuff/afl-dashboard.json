@@ -16,8 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1578462955061,
+  "iteration": 1578464917888,
   "links": [],
   "panels": [
     {
@@ -350,8 +349,8 @@
       "scopedVars": {
         "host": {
           "selected": true,
-          "text": "657aa0aaff80",
-          "value": "657aa0aaff80"
+          "text": "d0e1c040ccd3",
+          "value": "d0e1c040ccd3"
         }
       },
       "seriesOverrides": [],
@@ -495,19 +494,16 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
           "tags": [],
-          "text": "657aa0aaff80",
-          "value": [
-            "657aa0aaff80"
-          ]
+          "text": "d0e1c040ccd3",
+          "value": "d0e1c040ccd3"
         },
         "datasource": "InfluxDB",
         "definition": "select host from jobs",
         "hide": 0,
-        "includeAll": true,
+        "includeAll": false,
         "label": null,
-        "multi": true,
+        "multi": false,
         "name": "host",
         "options": [],
         "query": "select host from jobs",
