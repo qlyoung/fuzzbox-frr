@@ -16,7 +16,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1578462955053,
+  "id": 1,
+  "iteration": 1578462955061,
   "links": [],
   "panels": [
     {
@@ -87,7 +88,13 @@
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$host$/"
+            }
+          ]
         }
       ],
       "timeFrom": null,
@@ -134,20 +141,7 @@
       "pluginVersion": "6.5.2",
       "targets": [
         {
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "linear"
-              ],
-              "type": "fill"
-            }
-          ],
+          "groupBy": [],
           "measurement": "jobs",
           "orderByTime": "ASC",
           "policy": "autogen",
@@ -167,7 +161,13 @@
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$host$/"
+            }
+          ]
         }
       ],
       "timeFrom": null,
@@ -250,7 +250,13 @@
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$host$/"
+            }
+          ]
         }
       ],
       "thresholds": [
@@ -341,6 +347,13 @@
       "renderer": "flot",
       "repeat": "host",
       "repeatDirection": "v",
+      "scopedVars": {
+        "host": {
+          "selected": true,
+          "text": "657aa0aaff80",
+          "value": "657aa0aaff80"
+        }
+      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -422,7 +435,13 @@
               }
             ]
           ],
-          "tags": []
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$host$/"
+            }
+          ]
         }
       ],
       "thresholds": [],
@@ -475,17 +494,24 @@
     "list": [
       {
         "allValue": null,
-        "current": {},
+        "current": {
+          "selected": false,
+          "tags": [],
+          "text": "657aa0aaff80",
+          "value": [
+            "657aa0aaff80"
+          ]
+        },
         "datasource": "InfluxDB",
         "definition": "select host from jobs",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
         "label": null,
         "multi": true,
         "name": "host",
         "options": [],
         "query": "select host from jobs",
-        "refresh": 0,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
