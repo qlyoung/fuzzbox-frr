@@ -66,7 +66,7 @@ TOTAL_PFAV=0
 TOTAL_PENDING=0
 
 for i in `find . -maxdepth 2 -iname fuzzer_stats | sort`; do
-  sed 's/^command_line.*$/_skip:1/;s/[ ]*:[ ]*/="/;s/$/"/' "$i" >"$TMP"
+  sed 's/[ ]*:[ ]*/="/;s/$/"/' "$i" >"$TMP"
   # Import fuzzer_stats into bash vars
   . "$TMP"
 
@@ -104,8 +104,8 @@ test "$TOTAL_TIME" = "0" && TOTAL_TIME=1
 echo "Pushing to database $INFLUX_DATABASE"
 
 # Push to InfluxDB
-STAT=""
-STAT="host=\"$(hostname)\""
+STAT="target=\"$(basename $(echo $command_line | sed -n 's/^.*-- //p'))\""
+STAT="$STAT,host=\"$(hostname)\""
 STAT="$STAT,alive=$ALIVE_CNT"
 STAT="$STAT,crashes=$TOTAL_CRASHES"
 STAT="$STAT,execs_per_sec=$TOTAL_EPS"
