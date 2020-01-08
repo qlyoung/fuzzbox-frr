@@ -46,7 +46,7 @@ ARG cores=2
 ENV TGT="${target}"
 ENV CRE="${cores}"
 
-RUN touch $target
+HEALTHCHECK --interval=1s --retries=128 CMD test -f /opt/fuzz/started
 
 COPY ./entrypoint.sh /opt/entrypoint.sh
 ENTRYPOINT ["/opt/entrypoint.sh"]
