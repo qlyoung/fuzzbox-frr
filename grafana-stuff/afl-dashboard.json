@@ -89,9 +89,9 @@
           ],
           "tags": [
             {
-              "key": "host",
+              "key": "target",
               "operator": "=~",
-              "value": "/^$host$/"
+              "value": "/^$target$/"
             }
           ]
         }
@@ -162,9 +162,9 @@
           ],
           "tags": [
             {
-              "key": "host",
+              "key": "target",
               "operator": "=~",
-              "value": "/^$host$/"
+              "value": "/^$target$/"
             }
           ]
         }
@@ -251,9 +251,9 @@
           ],
           "tags": [
             {
-              "key": "host",
+              "key": "target",
               "operator": "=~",
-              "value": "/^$host$/"
+              "value": "/^$target$/"
             }
           ]
         }
@@ -344,10 +344,10 @@
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
-      "repeat": "host",
+      "repeat": "target",
       "repeatDirection": "v",
       "scopedVars": {
-        "host": {
+        "target": {
           "selected": true,
           "text": "d0e1c040ccd3",
           "value": "d0e1c040ccd3"
@@ -394,9 +394,9 @@
           ],
           "tags": [
             {
-              "key": "host",
+              "key": "target",
               "operator": "=~",
-              "value": "/^$host$/"
+              "value": "/^$target$/"
             }
           ]
         },
@@ -436,9 +436,9 @@
           ],
           "tags": [
             {
-              "key": "host",
+              "key": "target",
               "operator": "=~",
-              "value": "/^$host$/"
+              "value": "/^$target$/"
             }
           ]
         }
@@ -499,14 +499,14 @@
           "value": "d0e1c040ccd3"
         },
         "datasource": "InfluxDB",
-        "definition": "select host from jobs",
+        "definition": "select target from jobs",
         "hide": 0,
         "includeAll": false,
         "label": null,
         "multi": false,
-        "name": "host",
+        "name": "target",
         "options": [],
-        "query": "select host from jobs",
+        "query": "select target from jobs",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
