@@ -39,6 +39,12 @@ RUN mkdir -p /opt/fuzz/samples /opt/fuzz/out
 COPY ./*.conf ./afl2influx.sh /opt/fuzz/
 COPY ./frr-fuzz/samples /opt/fuzz/samples/
 
+ARG target
+ARG cores
+ENV TGT=${target}
+ENV CRE=${cores}
+
+RUN touch $target
+
 COPY ./entrypoint.sh /opt/entrypoint.sh
-ENTRYPOINT ["/opt/entrypoint.sh"]
-CMD ["$target", "$cores"]
+ENTRYPOINT /opt/entrypoint.sh $TGT $CRE

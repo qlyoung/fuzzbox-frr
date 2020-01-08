@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+
+  influx:
+    image: influxdb:latest
+    ports:
+      - "8086:8086"
+  fuzz-bgpd:
+    build:
+      context: .
+      args:
+        - "target=bgpd"
+        - "cores=2"
+  fuzz-zebra:
+    build:
+      context: .
+      args:
+        - "target=zebra"
+        - "cores=2"
+  fuzz-pimd:
+    build:
+      context: .
+      args:
+        - "target=pimd"
+        - "cores=2"
+  fuzz-ospfd:
+    build:
+      context: .
+      args:
+        - "target=ospfd"
+        - "cores=2"

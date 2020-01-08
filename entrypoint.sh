@@ -1,6 +1,7 @@
 #!/bin/bash
 PROTO=$1
 JOBS=$2
+echo "called with: $@"
 
 cd /opt/fuzz
 while /bin/true; do
