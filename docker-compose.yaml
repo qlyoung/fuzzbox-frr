@@ -1,28 +1,14 @@
-version: '3.3'
-
-configs:
-  afl-dashboard:
-    file: ./grafana-stuff/afl-dashboard.json
-  datasource-influx:
-    file: ./grafana-stuff/grafana-provisioning-datasources-influxdb.yaml
-  dashboards:
-    file: ./grafana-stuff/grafana-provisioning-dashboards-afl.yaml
-  my_other_config:
-    external: true
+version: '2.4'
 
 services:
   grafana:
     image: grafana/grafana:latest
-    #entrypoint: ["sh", "-c", "sleep 2073600"]
     ports:
       - "3000:3000"
-    configs:
-      - source: afl-dashboard
-        target: /opt/afl-dashboard.json
-      - source: datasource-influx
-        target: /etc/grafana/provisioning/datasources/influxdb.yaml
-      - source: dashboards
-        target: /etc/grafana/provisioning/dashboards/afl.yaml
+    volumes:
+      - ${PWD}/grafana-stuff/afl-dashboard.json:/opt/afl-dashboard.json
+      - ${PWD}/grafana-stuff/grafana-provisioning-datasources-influxdb.yaml:/etc/grafana/provisioning/datasources/influxdb.yaml
+      - ${PWD}/grafana-stuff/grafana-provisioning-dashboards-afl.yaml:/etc/grafana/provisioning/dashboards/afl.yaml
   influx:
     image: influxdb:latest
     ports:
