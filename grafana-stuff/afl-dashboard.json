@@ -16,7 +16,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1578462600528,
+  "iteration": 1578462955053,
   "links": [],
   "panels": [
     {
@@ -231,7 +231,7 @@
               "type": "fill"
             }
           ],
-          "measurement": "crashes",
+          "measurement": "jobs",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -240,7 +240,7 @@
             [
               {
                 "params": [
-                  "value"
+                  "crashes"
                 ],
                 "type": "field"
               },
@@ -341,13 +341,6 @@
       "renderer": "flot",
       "repeat": "host",
       "repeatDirection": "v",
-      "scopedVars": {
-        "host": {
-          "selected": true,
-          "text": "d4f7ac17f15e",
-          "value": "d4f7ac17f15e"
-        }
-      },
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
@@ -482,6 +475,7 @@
     "list": [
       {
         "allValue": null,
+        "current": {},
         "datasource": "InfluxDB",
         "definition": "select host from jobs",
         "hide": 0,
@@ -489,8 +483,7 @@
         "label": null,
         "multi": true,
         "name": "host",
-        "options": [
-        ],
+        "options": [],
         "query": "select host from jobs",
         "refresh": 0,
         "regex": "",
