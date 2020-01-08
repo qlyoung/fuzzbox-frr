@@ -101,15 +101,20 @@ TOTAL_HRS=$(((TOTAL_TIME / 60 / 60) % 24))
 
 test "$TOTAL_TIME" = "0" && TOTAL_TIME=1
 
-echo "Pusing to database $INFLUX_DATABASE"
+echo "Pushing to database $INFLUX_DATABASE"
 
 # Push to InfluxDB
-influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen clients value=$ALIVE_CNT"
-influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen crashes value=$TOTAL_CRASHES"
-influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen execs_per_sec value=$TOTAL_EPS"
-influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen execs value=$TOTAL_EXECS"
-influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen pending value=$TOTAL_PENDING"
-influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen pending_fav value=$TOTAL_PFAV"
-influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen cpu_hours value=$RUN_HRS"
+STAT=""
+STAT="host=\"$(hostname)\""
+STAT="$STAT,alive=$ALIVE_CNT"
+STAT="$STAT,crashes=$TOTAL_CRASHES"
+STAT="$STAT,execs_per_sec=$TOTAL_EPS"
+STAT="$STAT,execs=$TOTAL_EXECS"
+STAT="$STAT,pending=$TOTAL_PENDING"
+STAT="$STAT,pending_fav=$TOTAL_PFAV"
+STAT="$STAT,cpu_hours=$TOTAL_HRS"
+
+echo "Writing $STAT"
+influx -host $INFLUX_HOST -port $INFLUX_PORT -execute "INSERT INTO $INFLUX_DATABASE.autogen jobs $STAT"
 
 exit 0

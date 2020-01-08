@@ -10,27 +10,41 @@ services:
     image: influxdb:latest
     ports:
       - "8086:8086"
-  fuzz-bgpd:
-    build:
-      context: .
-      args:
-        - "target=bgpd"
-        - "cores=2"
+    environment:
+      - "INFLUXDB_DB=fuzzing"
+  #fuzz-bgpd:
+  #  image: qlyoung/fuzzbox-frr
+  #  build:
+  #    context: .
+  #  command: ["bgpd", "2"]
+  #  deploy:
+  #    resources:
+  #      reservations:
+  #        cpus: '2'
   fuzz-zebra:
+    image: qlyoung/fuzzbox-frr
     build:
       context: .
-      args:
-        - "target=zebra"
-        - "cores=2"
+    command: ["zebra", "2"]
+    deploy:
+      resources:
+        reservations:
+          cpus: '2'
   fuzz-pimd:
+    image: qlyoung/fuzzbox-frr
     build:
       context: .
-      args:
-        - "target=pimd"
-        - "cores=2"
-  fuzz-ospfd:
-    build:
-      context: .
-      args:
-        - "target=ospfd"
-        - "cores=2"
+    command: ["pimd", "2"]
+    deploy:
+      resources:
+        reservations:
+          cpus: '2'
+  #fuzz-ospfd:
+  #  image: qlyoung/fuzzbox-frr
+  #  build:
+  #    context: .
+  #  command: ["ospfd", "2"]
+  #  deploy:
+  #    resources:
+  #      reservations:
+  #        cpus: '2'

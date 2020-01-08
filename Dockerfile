@@ -11,7 +11,9 @@ RUN apt-get update && \
       pkg-config libpam0g-dev libjson-c-dev bison flex python3-pytest \    
       libc-ares-dev python3-dev libsystemd-dev python-ipaddress python3-sphinx \    
       install-info build-essential libsystemd-dev libsnmp-dev perl libcap-dev \    
-      cmake libpcre3-dev autoconf automake
+      cmake libpcre3-dev autoconf automake \
+      # influxdb client
+      influxdb-client
 
 # Install scripts & corpuses
 RUN mkdir -p /opt/build
@@ -39,12 +41,13 @@ RUN mkdir -p /opt/fuzz/samples /opt/fuzz/out
 COPY ./*.conf ./afl2influx.sh /opt/fuzz/
 COPY ./frr-fuzz/samples /opt/fuzz/samples/
 
-ARG target
-ARG cores
-ENV TGT=${target}
-ENV CRE=${cores}
+ARG target=zebra
+ARG cores=2
+ENV TGT="${target}"
+ENV CRE="${cores}"
 
 RUN touch $target
 
 COPY ./entrypoint.sh /opt/entrypoint.sh
-ENTRYPOINT /opt/entrypoint.sh $TGT $CRE
+ENTRYPOINT ["/opt/entrypoint.sh"]
+CMD [$TGT, $CRE]
